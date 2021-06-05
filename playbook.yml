@@ -1,0 +1,7 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: this is a test playbook
+    yum:
+      name: ['git','tomcat','unzip']
+      state: present
