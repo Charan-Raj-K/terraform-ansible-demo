@@ -16,6 +16,8 @@ resource "aws_instance" "myec2vm" {
   }
   # This is where we configure the instance with ansible-playbook
   provisioner "local-exec" {
+    
+    command = "sh sudo chmod 600 /opt/May.pem"
     command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user --private-key /opt/May.pem -i '${aws_instance.myec2vm.public_ip},' playbook.yml"
   }
 
